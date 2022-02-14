@@ -1,0 +1,6 @@
+projectKey=ProjectPB
+serverUrl=http://localhost:9000
+serverVersion=9.3.0.51899
+dashboardUrl=http://localhost:9000/dashboard?id=ProjectPB
+ceTaskId=AX73zG9IemyYlLC3YrPe
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AX73zG9IemyYlLC3YrPe

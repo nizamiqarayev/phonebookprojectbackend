@@ -1,7 +1,7 @@
 pipeline {
     agent any
       tools {
-        maven null
+        maven 'maven-3.8.4'
         }
     stages {
         stage ('Stage of Compiling') {

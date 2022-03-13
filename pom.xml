@@ -16,6 +16,12 @@
 	<description>Web Phonebook project</description>
 	<properties>
 		<java.version>11</java.version>
+		<sonar.host.url>http://localhost:9000/</sonar.host.url>
+		<sonar.login>9261e9a91e6af208e808bb88b4f017e63cc8861c</sonar.login>
+		<sonar.projectKey>pbprojectback</sonar.projectKey>
+		<sonar.language>java</sonar.language>
+		<sonar.java.binaries>target/classes</sonar.java.binaries>
+		<sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
@@ -133,7 +139,56 @@
 				<artifactId>sonar-maven-plugin</artifactId>
 				<version>3.9.1.2184</version>
 			</plugin>
-		</plugins>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.7</version>
+				<configuration>
+					<output>file</output>
+					<append>true</append>
+					<excludes>
+						<exclude>**/com/springboot/api/PhonebookApp.class</exclude>
+						<exclude>**/com/springboot/api/exception/ResourceNotFoundException.class</exclude>
+						<exclude>**/com/springboot/api/model/ActionAndStatus.class</exclude>
+						<exclude>**/com/springboot/api/model/ContactDto.class</exclude>
+						<exclude>**/com/springboot/api/model/ContactRequestData.class</exclude>
+						<exclude>**/com/springboot/api/operationtypes/OperationStatus.class</exclude>
+						<exclude>**/com/springboot/api/operationtypes/OperationTypes.class</exclude>
+						<exclude>**/com/springboot/api/repository/**</exclude>
+						<exclude>**/com/springboot/api/requestClasses/DeleteRequest.class</exclude>
+						<exclude>**/com/springboot/api/requestClasses/PostRequest.class</exclude>
+						<exclude>**/com/springboot/api/requestClasses/PutRequest.class</exclude>
+						<exclude>**/com/springboot/api/response/ResponseDto.class</exclude>
+					</excludes>
+				</configuration>
+				<executions>
+					<execution>
+						<id>jacoco-initialize</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-site</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.junit.platform</groupId>
+						<artifactId>junit-platform-surefire-provider</artifactId>
+						<version>1.0.0</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+	</plugins>
 	</build>
 	<repositories>
 		<repository>

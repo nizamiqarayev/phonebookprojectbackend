@@ -1,2 +1,4 @@
 com\springboot\api\DemoApplicationTests.class
 com\springboot\api\model\ContactTest.class
+com\springboot\api\controller\ContactControllerTest.class
+com\springboot\api\service\impl\ContactServiceImplTest.class

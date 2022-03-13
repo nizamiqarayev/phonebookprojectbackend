@@ -7,8 +7,12 @@ import java.util.List;
 
 public interface ContactService {
     Contact saveContact(Contact contact);
+
     List<Contact> getAllContacts();
+
     Contact getContactById(long id);
+
     Contact updateContact(PutRequest putRequest);
+
     void deleteContact(long id);
 }

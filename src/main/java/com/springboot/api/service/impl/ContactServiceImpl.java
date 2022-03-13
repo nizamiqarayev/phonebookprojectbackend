@@ -1,4 +1,5 @@
 package com.springboot.api.service.impl;
+
 import com.springboot.api.exception.ResourceNotFoundException;
 import com.springboot.api.model.Contact;
 import com.springboot.api.repository.ContactRepository;
@@ -6,13 +7,14 @@ import com.springboot.api.requestClasses.PutRequest;
 import com.springboot.api.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class ContactServiceImpl implements ContactService {
     @Autowired
-    private ContactRepository contactRepository;
+    private final ContactRepository contactRepository;
 
 
     public ContactServiceImpl(ContactRepository contactRepository) {

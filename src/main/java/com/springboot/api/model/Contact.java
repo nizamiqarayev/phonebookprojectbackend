@@ -1,11 +1,18 @@
 package com.springboot.api.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
 @Data
 @Entity
-@Table(name="Contacts")
+@Table(name = "Contacts")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,14 +21,10 @@ public class Contact {
     private String firstName;
     private String lastName;
     private long number;
-
-    public Contact(){
-
-    }
-    public Contact(String firstName,String lastName, long number) {
-        this.firstName=firstName;
-        this.lastName=lastName;
-        this.number=number;
+    public Contact(String firstName, String lastName, long number) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.number = number;
     }
 
     public long getId() {

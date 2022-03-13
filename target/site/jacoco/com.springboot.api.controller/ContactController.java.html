@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ContactController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api</a> &gt; <a href="index.source.html" class="el_package">com.springboot.api.controller</a> &gt; <span class="el_source">ContactController.java</span></div><h1>ContactController.java</h1><pre class="source lang-java linenums">package com.springboot.api.controller;
+
+
+import com.springboot.api.model.Contact;
+import com.springboot.api.requestClasses.PutRequest;
+import com.springboot.api.service.ContactService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(&quot;/&quot;)
+@CrossOrigin(&quot;*&quot;)
+<span class="fc" id="L18">@RequiredArgsConstructor</span>
+public class ContactController {
+    private final ContactService contactService;
+
+    @PostMapping(&quot;/user/add&quot;)
+    public String saveContact(@RequestBody Contact contact) {
+<span class="fc" id="L24">        contactService.saveContact(contact);</span>
+<span class="fc" id="L25">        return &quot;New Student added&quot;;</span>
+    }
+
+    @GetMapping(&quot;/user/list&quot;)
+    public List&lt;Contact&gt; getAllContacts(Model model) {
+<span class="fc" id="L30">        return contactService.getAllContacts();</span>
+
+    }
+
+    @PutMapping(&quot;/user/edit&quot;)
+    public ResponseEntity&lt;Contact&gt; updateContact(@RequestBody PutRequest putcontact) {
+<span class="fc" id="L36">        return new ResponseEntity&lt;Contact&gt;(contactService.updateContact(putcontact), HttpStatus.OK);</span>
+    }
+
+    @DeleteMapping(&quot;/user/delete/{id}&quot;)
+    public ResponseEntity&lt;String&gt; deleteEmployee(@PathVariable(&quot;id&quot;) long id) {
+<span class="fc" id="L41">        contactService.deleteContact(id);</span>
+<span class="fc" id="L42">        return new ResponseEntity&lt;String&gt;(&quot;Employee deleted successfully!.&quot;, HttpStatus.OK);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

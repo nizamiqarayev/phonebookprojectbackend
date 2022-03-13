@@ -1,8 +1,4 @@
 pipeline {
-    agent any
-    tools {
-        maven 
-        }
     stages {
         stage ('Stage of Compiling') {
             steps {
